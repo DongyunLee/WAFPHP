@@ -1,5 +1,5 @@
-#WAFPHP#
-A php framework for Web Application Firewall.
+# WAFPHP
+##### A php framework for Web Application Firewall.
 
 一个PHP级Web应用防护框架。
 
@@ -8,7 +8,7 @@ A php framework for Web Application Firewall.
 PS:当然，这只是一种思路，适用于某些特殊场景，它并不能完全替代你的专业防火墙 :)
 
 起步：
-
+```
 	// 为避免影响WAFPHP的输出，在加载WAFPHP之前请勿有任何html输出
 	require_once '#your WAFPHP path#/WAFPHP.php';
 	// 单例模式启动WAFPHP
@@ -16,8 +16,9 @@ PS:当然，这只是一种思路，适用于某些特殊场景，它并不能�
 	// 执行脚本检测
 	$wafPHP->runCheck();
 	#Your code#
+```
 或者
-
+```
 	// 为避免影响WAFPHP的输出，在加载WAFPHP之前请勿有任何html输出
 	require_once '#your WAFPHP path#/WAFPHP.php';
 	// 可根据需求在调用时使用独立配置，默认使用配置文件中的配置
@@ -29,11 +30,11 @@ PS:当然，这只是一种思路，适用于某些特殊场景，它并不能�
 	// 执行脚本检测
 	$wafPHP->runCheck();
 	#Your code#
+```
 
-
-###配置###
-#####配置文件路径：#####
-\#your WAFPHP path\#/Conf/config.default.php
+### 配置
+##### 配置文件路径：
+> `your_WAFPHP_path/Conf/config.default.php`
 
 详细配置请参考配置文件中的备注
 
