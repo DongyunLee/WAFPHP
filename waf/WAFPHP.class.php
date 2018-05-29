@@ -59,10 +59,10 @@ class WAFPHP
 	/**
 	 * 系统初始化
 	 * WAFPHP constructor.
-	 * @param string $config
+	 * @param array $config
 	 * @throws \WAFPHP\WAFPHPException
 	 */
-	private function __construct ($config = '')
+	private function __construct ($config = [])
 	{
 		//兼容PHP5.3，动态定义环境变量
 		self::defineEnv();
@@ -267,11 +267,11 @@ class WAFPHP
 	
 	/**
 	 * 系统实例化
-	 * @param string $config
+	 * @param array $config
 	 * @return null|\WAFPHP\WAFPHP
 	 * @throws \WAFPHP\WAFPHPException
 	 */
-	public static function getInstance ($config = '')
+	public static function getInstance ($config = [])
 	{
 		if ( !self::$instance instanceof self ) {
 			self::$instance = new self($config);
@@ -282,14 +282,17 @@ class WAFPHP
 	
 	/**
 	 * 获取当前系统配置文件配置
-	 * @return mixed
+	 * @return bool|mixed
 	 */
 	public static function getCurrentConfig ()
 	{
 		//避免未初始化前无法获取配置
 		self::defineEnv();
+		$configPath = self::$configPath . constant(WAF_PREFIX . 'CONFIG') . '.php';
 		
-		return require_once self::$configPath . constant(WAF_PREFIX . 'CONFIG') . '.php';
+		return \file_exists($configPath)
+			? require_once $configPath
+			: false;
 	}
 	
 	/**
